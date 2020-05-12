@@ -10,7 +10,7 @@ console.log('------');
 
 //set issueID
 let issueID = null;
-const jsonObjectSplit = jsonObject.split(' ', 3);
+const jsonObjectSplit = jsonObject.commits[0].message.split(' ', 3);
 if (jsonObjectSplit[0].match(process.env.RETAIL)) {
     issueID = jsonObjectSplit[0];
 }
