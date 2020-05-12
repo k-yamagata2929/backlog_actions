@@ -16,15 +16,11 @@ const postData = {
     "content": jsonObject.commits[0].message
 };
 const postDataStr = JSON.stringify(postData);
-const headers = {
-  'Content-Type':'application/json'
-}
+
 const options = {
   url: baseUrl,
   method: 'POST',
-  headers: headers,
-  json: true,
-  form: postDataStr
+  json: postDataStr
 }
 
 request(
