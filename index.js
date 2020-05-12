@@ -13,7 +13,7 @@ console.log('----------');
 
 const request = require('request');
 const postData = {
-    "content": jsonObject.commits[0].message
+    'content': jsonObject.commits[0].message
 };
 const postDataStr = JSON.stringify(postData);
 
