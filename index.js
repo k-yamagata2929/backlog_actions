@@ -29,15 +29,15 @@ try {
       if (jsonObjectSplit[2].match(fixMessage[i])) {
         statusID = 3;
         break;
-      }
-  }
+      };
+  };
 
-  for (let j = 0; j < closeMessage.length; i++) {
+  for (let j = 0; j < closeMessage.length; j++) {
       if (jsonObjectSplit[2].match(closeMessage[j])) {
         statusID = 4;
         break;
-      }
-  }
+      };
+  };
     
   // if issue id and commit message exist, add comment to backlog task
   if (issueID && commitMessage) {
