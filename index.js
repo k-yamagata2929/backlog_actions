@@ -8,27 +8,19 @@ console.log('---commit message---');
 console.log(jsonObject.commits[0].message);
 console.log('------');
 
-//set issueID
 try {
+  //set issueID
   let issueID = null;
   const jsonObjectSplit = jsonObject.commits[0].message.split(' ', 3);
   if (jsonObjectSplit[0].match(process.env.RETAIL)) {
       issueID = jsonObjectSplit[0];
-  }
-} catch (err) {
-  console.log(err.name + ': ' + err.message);
-};
+  };
     
-//set commit message
-try {
+  //set commit message
   let commitMessage = null;
   commitMessage = jsonObjectSplit[1];
-} catch (err) {
-  console.log(err.name + ': ' + err.message);
-};
     
-//set statusId
-try {
+  //set statusId
   let statusID = null;
   const fixMessage = ['#fix', '#fixes', '#fixed'];
   const closeMessage = ['#close', '#closes', '#closed'];
@@ -46,12 +38,9 @@ try {
         break;
       }
   }
-} catch (err) {
-  console.log(err.name + ': ' + err.message);
-};
     
-// if issue id and commit message exist, add comment to backlog task
-if (issueID && commitMessage) {
+  // if issue id and commit message exist, add comment to backlog task
+  if (issueID && commitMessage) {
     const baseUrlComment = 'https://' + process.env.API_HOST + '/api/v2/issues/' + issueID + '/comments?apiKey=' + process.env.API_KEY;
     
     const postDataCommet = {
@@ -75,10 +64,10 @@ if (issueID && commitMessage) {
         console.log(body)
       }
     );
-};
+  };
 
-// if issue id and status id exist, update backlog task status
-if (issueID && statusID) {
+  // if issue id and status id exist, update backlog task status
+  if (issueID && statusID) {
     const baseUrlStatus = 'https://' + process.env.API_HOST + '/api/v2/issues/' + issueID + '?apiKey=' + process.env.API_KEY;
     
     const postDataStatus = {
@@ -102,5 +91,7 @@ if (issueID && statusID) {
         console.log(body)
       }
     );
+  };
+} catch (err) {
+  console.log(err.name + ': ' + err.message);
 };
-    
