@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Hello
+      - name: updateBacklog
         uses: ./
         env:
           PROJECT_KEY: RETAIL
