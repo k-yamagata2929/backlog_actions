@@ -16,6 +16,7 @@ const postData = {
     "content": jsonObject.commits[0].message
 };
 const postDataStr = JSON.stringify(postData);
+console.log(postDataStr);
 
 request.post(
   baseUrl,
