@@ -16,6 +16,8 @@ const postData = {
     'content': jsonObject.commits[0].message
 };
 const postDataStr = JSON.stringify(postData);
+console.log(postData);
+console.log(postDataStr);
 
 const options = {
   url: baseUrl,
