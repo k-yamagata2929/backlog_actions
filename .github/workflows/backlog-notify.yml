@@ -1,0 +1,14 @@
+name: Backlog Notify
+on: push
+jobs:
+  backlog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Hello
+        uses: ./
+        env:
+          PROJECT_KEY: RETAIL
+          API_HOST: hcgooday.backlog.com
+          API_KEY: ${{ secrets.BACKLOG_API_KEY }}
