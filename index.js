@@ -20,7 +20,7 @@ const postDataStr = JSON.stringify(postData);
 const options = {
   url: baseUrl,
   method: 'POST',
-  json: postDataStr
+  json: postData
 }
 
 console.log(options);
