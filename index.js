@@ -18,7 +18,7 @@ try {
     
   //set commit message
   let commitMessage = null;
-  commitMessage = jsonObjectSplit[1];
+  commitMessage = '[github actions]: ' + jsonObjectSplit[1];
     
   //set statusId
   let statusID = null;
@@ -39,9 +39,10 @@ try {
       };
   };
     
-  // if issue id and commit message exist, add comment to backlog task
+  //Update backlog
   if (issueID) {
     issueID.forEach((issue) => {
+        // if issue id and commit message exist, add comment to backlog task
         if (issue.match(process.env.PROJECT_KEY) && commitMessage) {
           const baseUrlComment = 'https://' + process.env.API_HOST + '/api/v2/issues/' + issue + '/comments?apiKey=' + process.env.API_KEY;
     
