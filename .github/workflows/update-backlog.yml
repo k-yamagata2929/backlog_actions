@@ -1,4 +1,4 @@
-name: Backlog Notify
+name: Update Backlog 
 on: push
 jobs:
   backlog:
