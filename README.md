@@ -31,9 +31,11 @@ jobs:
 
 # how to use
 ## set commit message
-set commit message by using divider '/' like follows:
+set commit message by using divider '/' like follows:<br>
+```
 <project-id> / <commit message> / <status>
-  
+```
+
 ### project-id
 ex) PROJECT-12
 
