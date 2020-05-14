@@ -37,7 +37,8 @@ set commit message by using divider '/' like follows:<br>
 ```
 
 ### project-id
-ex) PROJECT-12
+you can set multiple project-id divided by space.<br>
+ex) PROJECT-12 PROJECT-13
 
 ### commit detail
 ex) first commit
@@ -49,7 +50,7 @@ ex) first commit
 ex) #fix
 
 ### example of commit message
-PROJECT-12 / first commit / #fix
+PROJECT-12 PROJECT-13 / first commit / #fix
 
 
 # very helpful
