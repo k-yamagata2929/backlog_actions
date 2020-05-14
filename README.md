@@ -3,13 +3,14 @@
 you can get backlog apikey from individual setting.
 
 ## register backlog api to github
-after moving to github repository page,
-then you register secret.(Setting ⇒ Secrets ⇒ Add a new secret
- NAME: BACKLOG_API_KEY
+after moving to github repository page,<br>
+then you register secret.(Setting ⇒ Secrets ⇒ Add a new secret)<br>
+<br>
+ NAME: BACKLOG_API_KEY<br>
  VALUE: apikey gotten from backlog
  
 ## create github actions workflow
-after moving to github repository page,
+after moving to github repository page,<br>
 then you create workflow.(Actions ⇒ New workflow ⇒ set up a workflow yourseld)
 
 create yml like follows and commit:
