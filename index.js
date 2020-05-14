@@ -11,9 +11,9 @@ console.log('------');
 try {
   //set issueID
   let issueID = null;
-  const jsonObjectSplit = jsonObject.commits[0].message.split(' ', 3);
+  const jsonObjectSplit = jsonObject.commits[0].message.split('/', 3);
   if (jsonObjectSplit[0].match(process.env.PROJECT_KEY)) {
-      issueID = jsonObjectSplit[0];
+      issueID = jsonObjectSplit[0].split(' ');
   };
     
   //set commit message
@@ -40,58 +40,63 @@ try {
   };
     
   // if issue id and commit message exist, add comment to backlog task
-  if (issueID && commitMessage) {
-    const baseUrlComment = 'https://' + process.env.API_HOST + '/api/v2/issues/' + issueID + '/comments?apiKey=' + process.env.API_KEY;
+  if (issueID) {
+    issueID.forEach((issue) => {
+        if (issue.match(process.env.PROJECT_KEY) && commitMessage) {
+          const baseUrlComment = 'https://' + process.env.API_HOST + '/api/v2/issues/' + issueID + '/comments?apiKey=' + process.env.API_KEY;
     
-    const postDataCommet = {
-      'content': commitMessage
-    };
+          const postDataCommet = {
+            'content': commitMessage
+          };
     
-    const optionsComment = {
-      url: baseUrlComment,
-      method: 'POST',
-      json: postDataCommet
-    };
+          const optionsComment = {
+            url: baseUrlComment,
+            method: 'POST',
+            json: postDataCommet
+          };
     
-    request(
-      optionsComment,
-      (error, res, body) => {
-        if (error) {
-          console.error(error)
-          return
-        }
-        console.log(`statusCode: ${res.statusCode}`)
-        console.log(body)
-      }
-    );
-  };
+          request(
+            optionsComment,
+            (error, res, body) => {
+              if (error) {
+                console.error(error)
+                return
+              }
+              console.log(`statusCode: ${res.statusCode}`)
+              console.log(body)
+            }
+          );
+        };
 
-  // if issue id and status id exist, update backlog task status
-  if (issueID && statusID) {
-    const baseUrlStatus = 'https://' + process.env.API_HOST + '/api/v2/issues/' + issueID + '?apiKey=' + process.env.API_KEY;
+        // if issue id and status id exist, update backlog task status
+        if (issueID && statusID) {
+          const baseUrlStatus = 'https://' + process.env.API_HOST + '/api/v2/issues/' + issueID + '?apiKey=' + process.env.API_KEY;
     
-    const postDataStatus = {
-      'statusId': statusID
-    };
+          const postDataStatus = {
+            'statusId': statusID
+          };
     
-    const optionsStatus = {
-      url: baseUrlStatus,
-      method: 'PATCH',
-      json: postDataStatus
-    };
+          const optionsStatus = {
+            url: baseUrlStatus,
+            method: 'PATCH',
+            json: postDataStatus
+          };
     
-    request(
-      optionsStatus,
-      (error, res, body) => {
-        if (error) {
-          console.error(error)
-          return
-        }
-        console.log(`statusCode: ${res.statusCode}`)
-        console.log(body)
-      }
-    );
-  };
+          request(
+            optionsStatus,
+            (error, res, body) => {
+              if (error) {
+                console.error(error)
+                return
+              }
+              console.log(`statusCode: ${res.statusCode}`)
+              console.log(body)
+            }
+          );
+        };
+
+    });
+  }
 } catch (err) {
   console.log(err.name + ': ' + err.message);
 };
