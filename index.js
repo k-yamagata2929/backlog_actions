@@ -43,7 +43,7 @@ try {
   if (issueID) {
     issueID.forEach((issue) => {
         if (issue.match(process.env.PROJECT_KEY) && commitMessage) {
-          const baseUrlComment = 'https://' + process.env.API_HOST + '/api/v2/issues/' + issueID + '/comments?apiKey=' + process.env.API_KEY;
+          const baseUrlComment = 'https://' + process.env.API_HOST + '/api/v2/issues/' + issue + '/comments?apiKey=' + process.env.API_KEY;
     
           const postDataCommet = {
             'content': commitMessage
@@ -69,8 +69,8 @@ try {
         };
 
         // if issue id and status id exist, update backlog task status
-        if (issueID && statusID) {
-          const baseUrlStatus = 'https://' + process.env.API_HOST + '/api/v2/issues/' + issueID + '?apiKey=' + process.env.API_KEY;
+        if (issue.match(process.env.PROJECT_KEY) && statusID) {
+          const baseUrlStatus = 'https://' + process.env.API_HOST + '/api/v2/issues/' + issue + '?apiKey=' + process.env.API_KEY;
     
           const postDataStatus = {
             'statusId': statusID
