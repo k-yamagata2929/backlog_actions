@@ -4,14 +4,18 @@ const fs = require('fs');
 
 //get commit message
 const jsonObject = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
+
+jsonObject.commits.forEach((commit) => {
+
+console.log('------');
 console.log('---commit message---');
-console.log(jsonObject.commits[jsonObject.commits.length-1].message);
+console.log(commit.message);
 console.log('------');
 
 try {
   //set issueID
   let issueID = null;
-  const jsonObjectSplit = jsonObject.commits[jsonObject.commits.length-1].message.split('/', 3);
+  const jsonObjectSplit = commit.message.split('/', 3);
   if (jsonObjectSplit[0].match(process.env.PROJECT_KEY)) {
       issueID = jsonObjectSplit[0].split(' ');
   };
@@ -101,3 +105,5 @@ try {
 } catch (err) {
   console.log(err.name + ': ' + err.message);
 };
+})
+
