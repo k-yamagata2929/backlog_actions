@@ -7,7 +7,7 @@ const jsonObject = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'ut
 
 jsonObject.commits.forEach((commit) => {
 
-console.log('------');
+console.log(' ');
 console.log('---commit message---');
 console.log(commit.message);
 console.log('------');
